@@ -23,7 +23,7 @@ if (getenv('AMBIENTE') == 'DEV') {
     $secureEnv = new SecureEnv\SecureEnv($key);
 }
 
-// print_r($secureEnv);
+print_r($secureEnv);
 // print_r($_SERVER);
 
 echo $secureEnv->getSecEnv('DB_HOST') . '<br>';
