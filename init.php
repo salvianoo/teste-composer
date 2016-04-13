@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors',1);
+ini_set('display_startup_erros',1);
+error_reporting(E_ALL);
+
 require __DIR__ . '/vendor/autoload.php';
 
 if (getenv('AMBIENTE') == 'DEV') {
@@ -13,14 +17,16 @@ if (getenv('AMBIENTE') == 'DEV') {
     $key = $encripta->getKey();
     $secureEnv = new SecureEnv\SecureEnv($key);
 } else {
+    echo "Prod" . '<br>';
     $key = "GGlmzcfkVBw3IEcVGVrlZLBPjd7Ak2Xz";
 
     $secureEnv = new SecureEnv\SecureEnv($key);
 }
 
+// print_r($secureEnv);
 // print_r($_SERVER);
 
-echo $secureEnv->getEnv('DB_HOST') . '<br>';
-echo $secureEnv->getEnv('DB_USER') . '<br>';
-echo $secureEnv->getEnv('DB_PASS') . '<br>';
-echo $secureEnv->getEnv('DB_NAME') . '<br>';
+echo $secureEnv->getSecEnv('DB_HOST') . '<br>';
+echo $secureEnv->getSecEnv('DB_USER') . '<br>';
+echo $secureEnv->getSecEnv('DB_PASS') . '<br>';
+echo $secureEnv->getSecEnv('DB_NAME') . '<br>';

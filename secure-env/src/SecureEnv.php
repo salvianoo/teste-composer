@@ -11,7 +11,7 @@ class SecureEnv
         $this->bootstrapSecEnv($key);
     }
 
-    public function getEnv($name, $fallback = '')
+    public function getSecEnv($name, $fallback = '')
     {
         if (isset($this->secEnv[$name])) {
             return trim($this->secEnv[$name]);
