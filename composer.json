@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {"SecureEnv\\": "secure-env/src/"}
+    },
+    "require": {
+        "vlucas/phpdotenv": "^2.2"
+    }
+}
