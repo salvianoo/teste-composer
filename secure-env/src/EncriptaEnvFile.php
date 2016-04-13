@@ -21,8 +21,10 @@ class EncriptaEnvFile
         $secEnv = [];
 
         foreach ($file_content as $envar) {
-            $arr = preg_split("/=/", $envar);  // --> FIX THIS =
-            $secEnv[$arr[0]] = $this->encryptEnv($this->key, $arr[1]);
+            $arr_name  = preg_split("/(=.+)/", $envar);
+            $arr_value = preg_split("/^(\w)+=?/", $envar);
+
+            $secEnv[$arr_name[0]] = $this->encryptEnv($this->key, $arr_value[1]);
         }
         return $secEnv;
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace SecureEnv;
 
 class SecureEnv
@@ -29,12 +30,6 @@ class SecureEnv
                 $this->secEnv[$name] = $this->decryptEnv($key, substr($value, 4));
             }
         }
-
-        // foreach ($this->envArray() as $name => $value) {
-        //     if (is_string($value) && strpos($value, 'ENC:') === 0) {
-        //         $this->secEnv[$name] = $this->decryptEnv($key, substr($value, 4));
-        //     }
-        // }
     }
 
     private function decryptEnv($key, $encoded)
@@ -42,20 +37,4 @@ class SecureEnv
         list($iv, $value) = unserialize(base64_decode($encoded));
         return mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $value, MCRYPT_MODE_CBC, $iv);
     }
-
-    // private function envArray()
-    // {
-    //     $vars_env = explode("\n", shell_exec('printenv'));
-
-    //     // print_r($vars_env);
-
-
-    //     return array_reduce($vars_env, function ($acc, $value) {
-    //         $var_env = (strstr($value, '=') ? explode("=", $value) : array($value, ''));  // FIX THIS =
-
-    //         // print_r($var_env);
-
-    //         return ( array_merge($acc, array($var_env[0] => $var_env[1])) );
-    //     }, []);
-    // }
 }

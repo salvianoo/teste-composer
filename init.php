@@ -16,14 +16,13 @@ if (getenv('AMBIENTE') == 'DEV') {
 
     $key = $encripta->getKey();
     $secureEnv = new SecureEnv\SecureEnv($key);
-} else {
-    echo "Prod" . '<br>';
+} else { // Prod
     $key = "GGlmzcfkVBw3IEcVGVrlZLBPjd7Ak2Xz";
 
     $secureEnv = new SecureEnv\SecureEnv($key);
 }
 
-print_r($secureEnv);
+// print_r($secureEnv);
 // print_r($_SERVER);
 
 echo $secureEnv->getSecEnv('DB_HOST') . '<br>';
